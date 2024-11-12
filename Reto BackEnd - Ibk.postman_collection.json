@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "ff90edd7-6176-449c-b3ae-9d481df93a50",
+		"name": "Reto BackEnd - Ibk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20572832"
+	},
+	"item": [
+		{
+			"name": "1. OAuth2 Token - Auth0",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"client_id\": \"gx49PcTV2ruE5iLLSOWN2ENDuvLFMH93\",\r\n    \"client_secret\": \"ol9eF7akfJ29SyLDLD1AyM6gyVzliPBI1SbvFLk_EwFCGAp6BzTt03t35-69XofW\",\r\n    \"audience\": \"https://securityclients/api\",\r\n    \"grant_type\": \"client_credentials\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-y0x7fjf1znvk2prw.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-y0x7fjf1znvk2prw",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. API BFF - obtener cliente y productos financieros",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjNyWE16S2EzN1llUmJWYjdQSFRrciJ9.eyJpc3MiOiJodHRwczovL2Rldi15MHg3ZmpmMXpudmsycHJ3LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJneDQ5UGNUVjJydUU1aUxMU09XTjJFTkR1dkxGTUg5M0BjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9zZWN1cml0eWNsaWVudHMvYXBpIiwiaWF0IjoxNzMxNDAzNjE1LCJleHAiOjE3MzE0OTAwMTUsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsImF6cCI6Imd4NDlQY1RWMnJ1RTVpTExTT1dOMkVORHV2TEZNSDkzIn0.K-N75zt8ZSxJpQTwMlo9Vr59udqSEuuLDrc0zQeA5Ooa_c8xPeONKaho-xxRGSZH9km22RpnqfNDpAlA2CrGX5TfhGQwt1-SrpLivBaAOaOK0ux9tY7YBIEaOaiqCdbMaLMGYKGSt6AZiAPWt-3tltZ0HrDjbvGOh6tTQI7h2ll7oYVLYaOmDOsUElm2do7lvjgPe5pJU4-WTAJp7DyB_A8nGy2L7GRcv4Wcwjx5mFYVUtCml8edfByik7w4Y5S0AF5Fhrm-ACfcqOTvlbEkp-brBdMmING8OoAf98s7Ki3_l3aNVJyYIWQurKRKd8vKkXwxeNaNR_MTj9X8cTRTyA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/bff/90babd11f28f02d99487235a5bc1691a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bff",
+						"90babd11f28f02d99487235a5bc1691a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Clientes - find Cliente",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "tracking-id",
+						"value": "AAAAAAAAAAAAAAAAAAAAAAAA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/api/v1/clientes/DEF456",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"clientes",
+						"DEF456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Productos - find Product by cliente id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tracking-id",
+						"value": "BBBBBBBBBBBBBBB",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8082/api/v1/productos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"v1",
+						"productos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

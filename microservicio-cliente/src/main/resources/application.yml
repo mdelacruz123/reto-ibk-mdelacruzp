@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: demo
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://postgres:5432/demodb
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+logging:
+  level:
+    root: INFO
+    com.ejemplo.microservicio: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
+  file:
+    path: logs
+    name: app.log
+
+springdoc:
+  api-docs:
+    path: /v1/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

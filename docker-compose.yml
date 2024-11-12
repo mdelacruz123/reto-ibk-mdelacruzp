@@ -1,0 +1,57 @@
+version: '3.8'
+services:
+  microservicio-cliente:
+    build:
+      context: ./microservicio-cliente
+    container_name: microservicio-cliente-container
+    ports:
+      - "8081:8080"
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+
+  microservicio-producto:
+    build:
+      context: ./microservicio-producto
+    container_name: microservicio-producto-container
+    ports:
+      - "8082:8080"
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+
+  bff:
+    build:
+      context: ./bff-project
+    container_name: bff-container
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - microservicio-cliente
+      - microservicio-producto
+
+  postgres:
+    image: postgres:15
+    container_name: db-container
+    environment:
+      POSTGRES_DB: demodb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./database-scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
