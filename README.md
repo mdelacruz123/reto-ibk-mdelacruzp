@@ -1,7 +1,7 @@
 # reto-ibk-mdelacruzp
 
 # PASOS PARA LEVANTAR EL RETO
-1. Descargar del repositorio git
+1. Descargar del repositorio git en la rama dev
 2. Tendremos la estructura de carpetas
 2. Ejecutar "mvn clean package" en el directorio de cada microservicio ( microservicio-cliente y microservicio-producto)
 3. Ejecutar  "docker-compose up --build" en la carpeta donde se encuentre el archivo docker-compose
